@@ -113,10 +113,18 @@ public class Chessboard extends JPanel {
 
         repaint();
         if (msg != null) {
-            if (msg.equals("你赢啦，恭喜恭喜！"))
+            if (msg.equals("你赢啦，恭喜恭喜！")) {
                 new BasicPlayer("/sound\\gamewin.wav").start();
-            else
+                Chess.JBFail.setEnabled(false);
+                Chess.JBPeace.setEnabled(false);
+                Chess.JBRepent.setEnabled(false);
+            }
+            else {
                 new BasicPlayer("/sound\\gameover.wav").start();
+                Chess.JBFail.setEnabled(false);
+                Chess.JBPeace.setEnabled(false);
+                Chess.JBRepent.setEnabled(false);
+            }
             JOptionPane.showMessageDialog(null, msg, "提示信息", JOptionPane.ERROR_MESSAGE);
             //init();
             Start.chessState = 0;

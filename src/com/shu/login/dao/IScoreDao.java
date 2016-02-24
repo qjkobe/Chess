@@ -20,7 +20,7 @@ public interface IScoreDao {
     void add(Score score);
 
     /**
-     * 添加用户
+     * 更新用户
      * @param score
      * @param isWin
      */

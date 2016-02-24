@@ -148,6 +148,9 @@ public class HandingMsg {
         Start.chessState = 0;
         Start.chessConfirm = 0;
         Chess.JBStart.setEnabled(true);
+        Chess.JBFail.setEnabled(false);
+        Chess.JBPeace.setEnabled(false);
+        Chess.JBRepent.setEnabled(false);
         String name=Start.getNowname();
         service.updateScore(service.queryScore(name) ,true);
 

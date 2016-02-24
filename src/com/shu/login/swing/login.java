@@ -24,7 +24,7 @@ public class login extends JFrame{
     JTextField jTextField ;//定义文本框组件
     JPasswordField jPasswordField;//定义密码框组件
     JLabel jLabel1,jLabel2;
-    JPanel jp1,jp2,jp3;
+    JPanel jp4;
     JButton jb1,jb2; //创建按钮
 //    private boolean flag=false;
 //    public static List<String> listusername = new ArrayList<String>();//保存登陆过的用户
@@ -32,15 +32,15 @@ public class login extends JFrame{
 
     public login(){
         jTextField = new JTextField(12);
-        jPasswordField = new JPasswordField(13);
+        jPasswordField = new JPasswordField(12);
+        jTextField.setMaximumSize(jTextField.getPreferredSize());
+        jPasswordField.setMaximumSize(jPasswordField.getPreferredSize());
         jLabel1 = new JLabel("用户名");
         jLabel2 = new JLabel("密码");
         jb1 = new JButton("确认");
         jb2 = new JButton("取消");
         final JLabel register=new JLabel("注册");
-        jp1 = new JPanel();
-        jp2 = new JPanel();
-        jp3 = new JPanel();
+        jp4=new JPanel();
 
         register.addMouseListener(new MouseAdapter() {
             @Override
@@ -76,7 +76,7 @@ public class login extends JFrame{
             public void actionPerformed(ActionEvent e) {
                 String username=jTextField.getText();
                 String password=new String(jPasswordField.getPassword());
-                System.out.println(username+":"+password);
+                //System.out.println(username+":"+password);
 
                 if(username.equals("")){
                     JOptionPane.showConfirmDialog(null, "用户名不能为空", "错误", JOptionPane.CLOSED_OPTION);
@@ -98,7 +98,7 @@ public class login extends JFrame{
                 }
 
                 /**
-                 * 用户是否已登录...未实现..不知为何
+                 * 用户是否已登录...未实现..得改数据库.唉
                  */
 //                for(String str:listusername){
 //                    System.out.println(str+","+username);
@@ -129,27 +129,43 @@ public class login extends JFrame{
         });
 
         //设置布局
-        this.setLayout(new GridLayout(3,1));
+        //this.setLayout(new GridLayout(2,1));
+        Box htemp1 = Box.createHorizontalBox();
+        Box htemp2=Box.createHorizontalBox();
+        Box htemp3=Box.createHorizontalBox();
+        //jTextField.setMaximumSize(jTextField.getPreferredSize());
 
-        jp1.add(jLabel1);
-        jp1.add(jTextField);//第一块面板添加用户名和文本框
+        htemp1.add(jLabel1);
+        htemp1.add(Box.createHorizontalStrut(10));
+        htemp1.add(jTextField);
 
-        jp2.add(jLabel2);
-        jp2.add(jPasswordField);//第二块面板添加密码和密码输入框
+        htemp2.add(jLabel2);
+        htemp2.add(Box.createHorizontalStrut(22));
+        htemp2.add(jPasswordField);
 
-        jp3.add(jb1);
-        jp3.add(jb2); //第三块面板添加确认和取消
-        jp3.add(register);
+        htemp3.add(jb1);
+        htemp3.add(Box.createHorizontalStrut(10));
+        htemp3.add(jb2);
+        htemp3.add(Box.createHorizontalStrut(10));
+        htemp3.add(register);
 
-        this.add(jp1);
-        this.add(jp2);
-        this.add(jp3);  //将三块面板添加到登陆框上面
+        Box vtemp = Box.createVerticalBox();
+
+        vtemp.add(htemp1);
+        vtemp.add(Box.createVerticalStrut(40));
+        vtemp.add(htemp2);
+        vtemp.add(Box.createVerticalStrut(40));
+        vtemp.add(htemp3);
+
+        jp4.add(vtemp);
+        this.add(jp4);
+
         //设置显示
         this.setSize(300, 200);
         this.setPreferredSize(new Dimension(300,200));
         this.setMaximumSize(new Dimension(300,200));
         this.setMaximumSize(new Dimension(300,200));
-        Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
+        //Dimension screenSize=Toolkit.getDefaultToolkit().getScreenSize();
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setLocationRelativeTo(null);
         //this.setLocation((int)(screenSize.getWidth()-300)/2,(int)(screenSize.getHeight()-200)/2);

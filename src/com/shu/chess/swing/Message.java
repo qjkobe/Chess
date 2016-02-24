@@ -1,7 +1,6 @@
 package com.shu.chess.swing;
 
 import com.shu.chess.Start;
-import sun.plugin.javascript.JSClassLoader;
 
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
